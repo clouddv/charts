@@ -1,3 +1,14 @@
 apiVersion: v1
-entries: {}
-generated: "2021-06-28T22:50:17.359403+07:00"
+entries:
+  label-service:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-06-28T23:03:01.164463+07:00"
+    description: A Helm chart for Kubernetes
+    digest: b6a67fa83fd0f35b482c0c3373b818c68a8fcde8582e2b7ccc62b1312f91e26f
+    name: label-service
+    type: application
+    urls:
+    - https://clouddv.github.io/charts/label-service-1.0.0.tgz
+    version: 0.1.0
+generated: "2021-06-28T23:03:01.163453+07:00"
