@@ -9,6 +9,6 @@ entries:
     name: label-service
     type: application
     urls:
-    - https://clouddv.github.io/charts/label-service-1.0.0.tgz
+    - https://clouddv.github.io/charts/label-service/label-service-1.0.0.tgz
     version: 0.1.0
 generated: "2021-06-28T23:03:01.163453+07:00"
