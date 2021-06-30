@@ -1,4 +1,4 @@
-# Default values for label-service.
+# Default values for java-service.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -11,7 +11,7 @@ image:
   tag: "develop.22"
 
 imagePullSecrets: []
-nameOverride: ""
+nameOverride: "service"
 fullnameOverride: ""
 
 serviceAccount:
