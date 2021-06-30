@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "java-service.fullname" . }}
+  name: {{ include "label-service.fullname" . }}
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
     service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apim-elb"
   labels:
-    {{- include "java-service.labels" . | nindent 4 }}
+    {{- include "label-service.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -15,4 +15,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "java-service.selectorLabels" . | nindent 4 }}
+    {{- include "label-service.selectorLabels" . | nindent 4 }}
