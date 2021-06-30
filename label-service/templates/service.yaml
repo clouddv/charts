@@ -2,6 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "label-service.fullname" . }}
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apim-elb"
   labels:
     {{- include "label-service.labels" . | nindent 4 }}
 spec:

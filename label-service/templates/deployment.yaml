@@ -11,6 +11,11 @@ spec:
   selector:
     matchLabels:
       {{- include "label-service.selectorLabels" . | nindent 6 }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 30
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -35,16 +40,19 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.service.containerPort }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
           readinessProbe:
             httpGet:
-              path: /
-              port: http
+              path: {{ .Values.healthCheck.path }}
+              port: {{ .Values.service.containerPort }}
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          env:
+            {{- toYaml .Values.envs | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
